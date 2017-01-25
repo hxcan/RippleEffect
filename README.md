@@ -1,5 +1,6 @@
-RippleEffect
+RippleEffect 1.3.1
 ================
+This is not the original repo of this project, but a fork to fix the crash problem when targeting API 22+. The bug was fixed by [@rasoulmiri](https://github.com/rasoulmiri/RippleEffect) and I just uploaded it so you can add the dependency in gradle.
 
 ![RippleEffect](https://github.com/traex/RippleEffect/blob/master/header.png)
 
@@ -8,12 +9,27 @@ ExpandableLayout provides an easy way to create a view called header with an exp
 ![RippleEffect GIF](https://github.com/traex/RippleEffect/blob/master/demo.gif)
 
 ### Integration
-The lib is available on Maven Central, you can find it with [Gradle, please](http://gradleplease.appspot.com/#rippleeffect)
+The lib will be available on jCenter in a close future. Meanwhile, you can use it by adding this code snippet to the project-level build.gradle
+
+``` xml
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://dl.bintray.com/patrickpissurno/ripple-effect/'
+        }
+    }
+}
+
+```
+
+And this one to the module-level build.gradle
 
 ``` xml
 
 dependencies {
-    compile 'com.github.traex.rippleeffect:library:1.3'
+    compile 'com.patrickpissurno:ripple-effect:1.3.1'
 }
 
 ```
