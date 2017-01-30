@@ -9,22 +9,7 @@ ExpandableLayout provides an easy way to create a view called header with an exp
 ![RippleEffect GIF](https://github.com/traex/RippleEffect/blob/master/demo.gif)
 
 ### Integration
-The lib will be available on jCenter in a close future. Meanwhile, you can use it by adding this code snippet to the project-level build.gradle
-
-``` xml
-
-allprojects {
-    repositories {
-        jcenter()
-        maven {
-            url 'https://dl.bintray.com/patrickpissurno/ripple-effect/'
-        }
-    }
-}
-
-```
-
-And this one to the module-level build.gradle
+The lib is available on jCenter, so you just need to add this code snippet to the module-level build.gradle
 
 ``` xml
 
