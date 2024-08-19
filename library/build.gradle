@@ -1,25 +1,36 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-    namespace 'com.andexert.library'
+android 
+{
+  compileSdkVersion 23
+  buildToolsVersion "23.0.1"
+  namespace 'com.andexert.library'
 
-    defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 23
-        versionCode 9
-        versionName "1.3"
+  defaultConfig {
+      minSdkVersion 9
+      targetSdkVersion 23
+      versionCode 9
+      versionName "1.3"
+  }
+  lintOptions {
+      abortOnError false
+  }
+  buildTypes {
+      release {
+          minifyEnabled false
+          proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      }
+  }
+  
+  publishing
+  {
+    singleVariant('release')
+    {
+      withSourcesJar()
     }
-    lintOptions {
-        abortOnError false
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
+
 }
 
 dependencies 
@@ -31,4 +42,21 @@ dependencies
 if (hasProperty("VERSION_NAME"))
 {
     apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+}
+
+afterEvaluate 
+{
+  publishing 
+  {
+    publications
+    {
+      release(MavenPublication)
+      {
+        from components.release
+        groupId = 'com.github.hxcan'
+        artifactId = 'RippleEffect'
+        version = '2024.8.21'
+      }
+    }
+  }
 }
